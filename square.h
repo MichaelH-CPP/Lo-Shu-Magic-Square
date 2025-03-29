@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <time.h>
 #include <stddef.h>
 
 static int checkIfSquare(int input[3][3])
@@ -39,4 +39,22 @@ void printSquare(int input[3][3])
             (j != 2) ? printf(" ") : printf("]\n");
         }
     }
+}
+
+void makeSquare(int newSquare[3][3])
+{
+    int numbers[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    for (int i = 8; i > 0; i--)
+    {
+        int j = rand() % (i + 1);
+        int temp = numbers[i];
+        numbers[i] = numbers[j];
+        numbers[j] = temp;
+    }
+
+    // Populate the 3x3 matrix
+    int index = 0;
+    for (int i = 0; i < 3; i++)
+        for (int j = 0; j < 3; j++)
+            newSquare[i][j] = numbers[index++];
 }
